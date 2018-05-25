@@ -1,0 +1,8 @@
+<mat-list>
+  <mat-list-item *ngFor="let device of devices">
+    <h3 matLine>{{device._id}} - {{device.descripcion}} </h3>
+    <p matLine>
+      <span>URL: {{device.host}}:{{device.puerto}}</span>
+    </p>
+  </mat-list-item>
+</mat-list>

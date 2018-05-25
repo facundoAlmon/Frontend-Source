@@ -1,0 +1,11 @@
+<mat-list>
+  <mat-list-item *ngFor="let device of devices">
+    <h3 matLine>{{device._id}} - {{device.descripcion}} </h3>
+    <p matLine>
+      <span>URL: {{device.host}}:{{device.puerto}}</span>
+    </p>
+    <button mat-icon-button routerLink="/dispositivos/{{device._id}}">
+        <mat-icon>info</mat-icon>
+     </button>
+  </mat-list-item>
+</mat-list>

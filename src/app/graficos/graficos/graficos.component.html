@@ -1,0 +1,31 @@
+<div class="row">
+  <mat-form-field style="padding-left: 5em;">
+    <input matInput [matDatepicker]="picker1" placeholder="Fecha Desde" #dateFrom [formControl]="dateFromV">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker2" placeholder="Fecha Hasta" #dateTo [formControl]="dateToV">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  <button mat-button (click)="refreshData(dateFrom.value,dateTo.value)">Refrescar</button>
+</div>
+<div class="row" *ngIf="tempLabels!=0">
+  <h4>Temperatura</h4>
+  <div style="display: block;">
+    <canvas baseChart width="400" height="180" [datasets]="tempValues" [labels]="tempLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+  </div>
+</div>
+<div class="row" *ngIf="hLabels!=0">
+  <h4>Humedad</h4>
+  <div style="display: block;">
+    <canvas baseChart width="400" height="180" [datasets]="hValues" [labels]="hLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+  </div>
+</div>
+<div class="row" *ngIf="lLabels!=0">
+  <h4>Luz</h4>
+  <div style="display: block;">
+    <canvas baseChart width="400" height="180" [datasets]="lValues" [labels]="lLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+  </div>
+</div>

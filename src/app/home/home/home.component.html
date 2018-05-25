@@ -1,0 +1,30 @@
+<form class="example-form" (ngSubmit)="onSubmit($event)">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]=true *ngFor="let device of devices">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{device._id}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{device.descripcion}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item [hidden]="!device.modulosInfo.DHT.temp">
+          Temperatura: {{device.modulosInfo.DHT.temp}} °C</mat-list-item>
+        <mat-list-item [hidden]="!device.modulosInfo.DHT.humedad">
+          Humedad: {{device.modulosInfo.DHT.humedad}} %</mat-list-item>
+        <mat-list-item [hidden]="!device.modulosInfo.RELAY">
+          <mat-slide-toggle color="primary" (click)="switchRelay(device)">Luz</mat-slide-toggle>
+        </mat-list-item>
+      </mat-list>
+      <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile colspan='1' *ngFor="let irCode of irCodes">
+          <button mat-fab color="primary" (click)="sendIRCode(device,irCode,$event)">
+            {{irCode.nombre}}
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
