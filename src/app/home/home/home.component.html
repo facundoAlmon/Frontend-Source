@@ -1,6 +1,6 @@
 <form class="example-form" (ngSubmit)="onSubmit($event)">
   <mat-accordion>
-    <mat-expansion-panel [expanded]=true *ngFor="let device of devices">
+    <mat-expansion-panel *ngFor="let device of devices">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{device._id}}
@@ -10,15 +10,15 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-list>
-        <mat-list-item [hidden]="!device.modulosInfo.DHT.temp">
+        <mat-list-item *ngIf="device.modulosInfo.DHT != undefined">
           Temperatura: {{device.modulosInfo.DHT.temp}} °C</mat-list-item>
-        <mat-list-item [hidden]="!device.modulosInfo.DHT.humedad">
+        <mat-list-item *ngIf="device.modulosInfo.DHT != undefined">
           Humedad: {{device.modulosInfo.DHT.humedad}} %</mat-list-item>
-        <mat-list-item [hidden]="!device.modulosInfo.RELAY">
+        <mat-list-item *ngIf="device.modulosInfo.RELAY != undefined">
           <mat-slide-toggle color="primary" (click)="switchRelay(device)">Luz</mat-slide-toggle>
         </mat-list-item>
       </mat-list>
-      <mat-grid-list cols="4" rowHeight="1:1">
+      <mat-grid-list cols="4" rowHeight="1:1" *ngIf="device.modulosInfo.IRSender != undefined">
         <mat-grid-tile colspan='1' *ngFor="let irCode of irCodes">
           <button mat-fab color="primary" (click)="sendIRCode(device,irCode,$event)">
             {{irCode.nombre}}

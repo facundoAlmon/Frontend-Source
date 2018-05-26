@@ -84,6 +84,7 @@ checked: boolean;
 					})
 				}
 			}
+      console.log(devices[i])
 			if (!this.devices[i]){
 				this.devices.push(devices[i])
 			}else{
